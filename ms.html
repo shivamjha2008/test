@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Us</title>
+    <link rel="icon" href="s.png" type="image">
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="St.css">
+
+</head>
+
+<body>
+    <div class="form-container">
+        <form id="form" onsubmit="sendEmail(); reset(); return false;">
+
+
+            <div class="container">
+                <a href="main.html">
+                    <div class="logo"></div>
+                </a>
+                <div class="title">BK TOOLS</div>
+
+                <div class="sub-title"> Tools that won't Quit </div>
+                <div class="para"> Email us with any questions or inqueries or call on 9818496828. We would be happy to answer your questions and set up a meeting with you."B.K. Tools" can help set you apart from the flock!</div>
+
+                <span class="icon"><i class="fa fa-user"></i></span>
+                <input type="text" id="name" placeholder="Name" />
+                <span class="icon"><i class="fa fa-envelope-square"></i></span>
+                <input type="email" id="email" placeholder="Email" />
+                <span class="icon"><i class="fa fa-phone-square"></i></span>
+                <input type="text" id="phone" placeholder="phone" />
+                <!-- <span class="icon"><i class="fa fa-paperclip"></i></span>
+                <input type="file" id="filename" placeholder="InsertFile" /> -->
+
+            </div>
+
+            <div class="mess"><span class="icon"><i class="fa fa-comments"></i></span>
+                <input type="text" id="message" placeholder="Message" /></div>
+
+
+            <input type="submit" value="Send Email">
+
+
+
+        </form>
+
+    </div>
+    <script>
+        document.addEventListener("contextmenu", e => e.preventDefault(), false);
+    </script>
+    <script>
+        document.addEventListener("keydown", e => {
+            // USE THIS TO DISABLE CONTROL AND ALL FUNCTION KEYS
+            // if (e.ctrlKey || (e.keyCode>=112 && e.keyCode<=123)) {
+            // THIS WILL ONLY DISABLE CONTROL AND F12
+            if (e.ctrlKey || e.keyCode == 123) {
+                e.stopPropagation();
+                e.preventDefault();
+            }
+        });
+    </script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+        function sendEmail() {
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let phone = document.getElementById("phone").value;
+            let message = document.getElementById("message").value;
+
+            let body = "Name: " + name + "<br> Email: " + email + "<br> Phone: " + phone + "<br> Message: " + message;
+            console.log(body);
+
+
+            Email.send({
+
+                SecureToken: "9280ffc6-1199-4d8e-a510-07a68146376f",
+                Host: "smtp.elasticemail.com",
+                Username: "jhashivam2008@yahoo.com",
+                Password: "CE7A81BD7AC5AA898BA0B8E36194EC77CE26",
+                To: 'shivam.jhacse@acem.edu.in',
+                From: "shivam.jhacse@acem.edu.in",
+                Subject: "Email us with any questions Shivam",
+                Body: body,
+
+
+            }).then(
+                message => alert("message sent Successfully")
+            );
+        }
+    </script>
+
+</body>
+
+</html>
